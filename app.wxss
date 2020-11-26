@@ -1,0 +1,22 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  align-items: center;
+  box-sizing: border-box;
+} 
+.nickname{
+  left: 40%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+}
+.head{
+  top: auto;
+  width: 100px; 
+  height: 150px; 
+  background-color: #eeeeee;
+}
+.horizontal-scroll {
+  overflow: hidden;
+}

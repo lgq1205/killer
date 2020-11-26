@@ -1,0 +1,19 @@
+<view class="horizontal-scroll">
+  <view>
+    <view>  
+      <slider bindchange="changenum" min="5" max="20" show-value/>
+    </view>
+  </view>
+  <view  wx:for="{{larray}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
+    <view style="display:flex; justify-content:space-between;">
+    <view id='{{larray[idx].text}}' bindtap='imgclick' >
+        <image class='head' src="{{img_list[larray[idx].img_id]}}"></image>
+        <view class='nickname'>{{larray[idx].text}}</view>
+    </view>
+    <view id='{{rarray[idx].text}}' bindtap='imgclick' wx:if="{{idx < rarray.length}}">
+        <image class='head' src="{{img_list[rarray[idx].img_id]}}"></image>
+        <view class='nickname'>{{rarray[idx].text}}</view>
+    </view>
+    </view>
+  </view>
+</view>
