@@ -13,10 +13,17 @@
 }
 .head{
   top: auto;
-  width: 100px; 
-  height: 150px; 
+  width: 69px; 
+  height: 80px; 
   background-color: #eeeeee;
 }
 .horizontal-scroll {
   overflow: hidden;
+}
+.tui-table-view{
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }

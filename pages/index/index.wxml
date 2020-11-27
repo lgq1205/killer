@@ -1,22 +1,46 @@
-<view class="horizontal-scroll">
-  <view>
+<!--pages/enquiry/enquiry.wxml--> 
+
     <view>  
-      <slider bindchange="changenum" min="5" max="20" show-value/>
+      <!-- 人数选择 -->
+      <slider bindchange="changenum" min="1" max="20" show-value/>
+    </view>
+  <view class="tui-table-view" >
+    <!-- 图片区 -->
+    <view wx:for="{{array}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
+        <image id="{{idx}}" bindtap="imgclick" class='head' src="{{img_list[array[idx].img_id]}}"></image>
+        <view class='nickname'>{{idx + 1}}</view>
     </view>
   </view>
-  <view  wx:for="{{larray}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
-    <view style="display:flex; justify-content:space-between;">
-    <view id='{{larray[idx].text}}' bindtap='imgclick' >
-        <image class='head' src="{{img_list[larray[idx].img_id]}}"></image>
-        <view class='nickname'>{{larray[idx].text}}</view>
-    </view>
-    <view id='{{rarray[idx].text}}' bindtap='imgclick' wx:if="{{idx < rarray.length}}">
-        <image class='head' src="{{img_list[rarray[idx].img_id]}}"></image>
-        <view class='nickname'>{{rarray[idx].text}}</view>
-    </view>
-    </view>
+<view class='container'>
+  <view class='chatGroup'>
+    <!-- 对话框 -->
+    <scroll-view scroll-y="true" style="height:{{ viewHeight }}rpx; " bindscroll="scroll" scroll-with-animation='{{ isAnimation }}' scroll-into-view="{{ toView }}" >
+			<view class='chatWrap'>
+				<!-- 循环: 问题&回答 -->
+				<view wx:for='{{ chatDataArray }}' wx:key='index'>
+					<!-- 回答 -->
+					<view class='chatLabel'>
+						<image class='avatar' src='{{ avatarUser }}'></image>
+						<view class='articleBox'>{{ item.useMsg }}</view>
+					</view>
+				</view>
+			</view>
+			<view id="toFooter"></view>
+    </scroll-view>
+
+    <!-- 回复框 -->
+		<view class='chatFooterGroup' id='footerBtnGroup'>
+			<form bindsubmit="formSubmit">
+					<view class='textInputBox'>
+							<input class="textInput" value='{{ useMsg }}' name="useMsg" cursor-spacing="20" placeholder="hallo." placeholder-style="color:#999;" bindinput="bindInputValue" />
+					</view>
+					<view class='sendMsgBox'>
+						<button class='sendBtn {{ !canSend ? "gray" : "" }}' form-type="submit">发 送</button>
+					</view>
+			</form>
+		</view>
+
   </view>
 </view>
-
 
 
